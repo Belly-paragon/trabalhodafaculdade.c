@@ -5,7 +5,7 @@ int main() {
     char estado1;
     char codigo1[4];
     char nomeCidade1[50];
-    unsigned long int populacao1;
+    float populacao1;
     float area1, pib1;
     int pontosTuristicos1;
     float densidadePopulacional1, pibPerCapita1, superPoder1;
@@ -14,33 +14,43 @@ int main() {
     char estado2;
     char codigo2[4];
     char nomeCidade2[50];
-    unsigned long int populacao2;
+    float populacao2;
     float area2, pib2;
     int pontosTuristicos2;
     float densidadePopulacional2, pibPerCapita2, superPoder2;
 
     // ===== Leitura da Carta 1 =====
-    printf("Carta 1:\n");
-    printf("Estado: ");
-    scanf(" %c", &estado1);
+printf("Carta 1:\n");
 
-    printf("Código: ");
-    scanf("%s", codigo1);
+// Estado
+printf("Estado: ");
+scanf(" %c", &estado1);  // lê o caractere ignorando espaços
+while (getchar() != '\n'); // limpa tudo até o Enter
 
-    printf("Nome da cidade: ");
-    scanf(" %[^\n]", nomeCidade1);
+// Código
+printf("Código: ");
+scanf("%3s", codigo1);  // lê o código (sem espaço e sem &)
 
-    printf("População: ");
-    scanf("%lu", &populacao1);
+// Nome da cidade
+printf("Nome da cidade: ");
+while (getchar() != '\n'); // limpa possíveis restos no buffer
+scanf("%49[^\n]", nomeCidade1); // lê até o Enter
 
-    printf("Área (km²): ");
-    scanf("%f", &area1);
+// População
+printf("População: ");
+scanf("%lu", &populacao1);
 
-    printf("PIB (em bilhões de reais): ");
-    scanf("%f", &pib1);
+// Área
+printf("Área (km²): ");
+scanf("%f", &area1);
 
-    printf("Número de pontos turísticos: ");
-    scanf("%d", &pontosTuristicos1);
+// PIB
+printf("PIB (em bilhões de reais): ");
+scanf("%f", &pib1);
+
+// Pontos turísticos
+printf("Número de pontos turísticos: ");
+scanf("%d", &pontosTuristicos1);
 
     // ===== Cálculos da Carta 1 =====
     densidadePopulacional1 = populacao1 / area1;
@@ -53,10 +63,10 @@ int main() {
     scanf(" %c", &estado2);
 
     printf("Código: ");
-    scanf("%s", codigo2);
+    scanf("%3s", codigo2);
 
     printf("Nome da cidade: ");
-    scanf(" %[^\n]", nomeCidade2);
+    scanf(" %49[^\n]", nomeCidade2);
 
     printf("População: ");
     scanf("%lu", &populacao2);
@@ -104,6 +114,10 @@ int main() {
     printf("Densidade Populacional: Carta 1 venceu (%d)\n", densidadePopulacional1 < densidadePopulacional2); // menor vence
     printf("PIB per Capita: Carta 1 venceu (%d)\n", pibPerCapita1 > pibPerCapita2);
     printf("Super Poder: Carta 1 venceu (%d)\n", superPoder1 > superPoder2);
+
+    return 0;
+}
+
 
     return 0;
 }
